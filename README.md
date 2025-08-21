@@ -73,6 +73,10 @@ OR run the executable directly in the container:
 sudo docker exec -it meshmqtt-api-1 /app/MeshMqtt --host=192.168.4.197 --username=mesh --password=MeshPass! --user-id=ba67019c --node-number=3127312796 --meshtastic-mqtt-root-topic=mesh/messages --body="Hello from the command line"
 ```
 
+### Or Just Use Curl:
+
+`curl -X 'POST' 'http://localhost:8097/messages?message=Hello'`
+
 ## API Usage
 Set the properties of Global.cs via your docker enviroment variables, then start the container.
 
