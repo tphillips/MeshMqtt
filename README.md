@@ -8,15 +8,14 @@ A *simple* command-line tool and API to send messages to a Meshtastic MQTT broke
 					   MeshMqtt
 						  |
 				+---------------------+
-				|   MQTT Broker       |
-				|  (Internet)         |
+				|     MQTT Server     |
 				+---------------------+
 						  |
 						  |
-				+---------------------+
-				| Meshtastic Node     |
-				| (Internet Connected)|
-				+---------------------+
+				+----------------------+
+				|   Meshtastic Node    |
+				| (Internet Connected) |
+				+----------------------+
 						  |
 		 +----------------+----------------+
 		 |                                 |
