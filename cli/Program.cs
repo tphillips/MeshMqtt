@@ -22,37 +22,10 @@ class Program
         topic = $"{meshtasticMqttRootTopic}/2/json/Mqtt/{userId}";
         clientId = Guid.NewGuid().ToString();
         ShowArgs();
-        await SendMessage();
+        await Mqtt.SendMessage(host, port, username, password, userId, nodeNumber, meshtasticMqttRootTopic, body, channelNumber, topic, clientId);
     }
 
-	private static async Task SendMessage()
-	{
-		var factory = new MqttFactory();
-		var mqttClient = factory.CreateMqttClient();
-		var options = new MqttClientOptionsBuilder()
-			.WithTcpServer(host, port)
-			.WithCredentials(username, password)
-			.WithClientId(clientId)
-			.WithCleanSession()
-			.Build();
-		var connectResult = await mqttClient.ConnectAsync(options);
-		if (connectResult.ResultCode == MqttClientConnectResultCode.Success)
-		{
-			Console.WriteLine("Connected. Sending . . .");
-			var message = new MqttApplicationMessageBuilder()
-				.WithTopic(topic)
-				.WithPayload($"{{\"from\":{nodeNumber},\"channel\":{channelNumber},\"payload\":\"{body}\",\"type\":\"sendtext\"}}")
-				.WithRetainFlag()
-				.Build();
-			await mqttClient.PublishAsync(message);
-			await mqttClient.DisconnectAsync();
-			Console.WriteLine("OK");
-		}
-		else
-		{
-			Console.WriteLine($"Failed to connect to MQTT broker: {connectResult.ResultCode}");
-		}
-	}
+	
 
 	private static void ShowArgs()
 	{

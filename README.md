@@ -1,12 +1,19 @@
 # MeshMqtt
 
-A simple command-line tool to send messages to a Meshtastic MQTT broker.  More for information purposes but perfectly usable.  You are probably looking for this:
+A simple command-line tool and API to send messages to a Meshtastic MQTT broker.  More for information purposes but perfectly usable.  You are probably looking for this:
 
 `.WithPayload($"{{\"from\":{nodeNumber},\"channel\":{channelNumber},\"payload\":\"{body}\",\"type\":\"sendtext\"}}")`
 
-## Usage
+## API Usage
+Set the properties of Global.cs via your docker enviroment variables, then start the container.
 
-Run the program with required options:
+Send messages with: 
+
+`curl -X 'POST' 'http://localhost:8080/messages?message=Hello'`
+
+## CLI Usage
+
+Run the cli program with required options:
 
 ```
 meshmqtt --host=HOST --port=PORT --username=USER --password=PASS --user-id=ID --node-number=NUM --meshtastic-mqtt-root-topic=TOPIC --channel=1 --body=BODY
