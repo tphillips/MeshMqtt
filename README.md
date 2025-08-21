@@ -68,6 +68,9 @@ meshmqtt --host=192.168.4.197 --username=mesh --password=MeshPass! --user-id=ba6
 - `--meshtastic-mqtt-root-topic` : Root topic as set in meshtastic MQTT settings (required)
 - `--channel` : Meshtastic Channel Number. Defaults to 1!! (Your first manually added channel, not LongFast)
 - `--body` : Message body (required)
+- `--repeat-interval` : Repeat the message every x seconds. Default no repeat
+
+The `--repeat-interval` setting is useful for range testing, for example.
 
 ## Requirements
 - .NET 8 SDK or newer
