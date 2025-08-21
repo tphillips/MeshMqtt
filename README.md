@@ -30,7 +30,7 @@ ports:
 ```
 Start the service
 ```
-docker compose up
+docker compose up -d
 ```
 
 ### Use the CLI from the container
