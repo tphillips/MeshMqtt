@@ -120,9 +120,16 @@ meshmqtt --host=192.168.4.197 --username=mesh --password=MeshPass! --user-id=ba6
 The `--repeat-interval` setting is useful for range testing, for example.
 
 ## Requirements
+- Docker
+
+OR
+
 - .NET 8 SDK or newer
 - MQTTnet NuGet package
-- An mqtt server
+
+Plus
+
+- An (a?) mqtt server
 
 ## What, No MQTT Server
 
