@@ -57,7 +57,7 @@ Send messages with:
 
 `curl -X 'POST' 'http://localhost:8097/messages?message=Hello'`
 
-The api is useful to allow you to send data to your mesh via a simple curl command.  Avoiding the complexities of mqtt.
+The api is useful to allow you to send data to your mesh via a simple curl command.  Avoiding the complexities of mqtt (and even the complexities of this cli).
 
 A useful example would be a HomeAssistant integration.
 
