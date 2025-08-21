@@ -3,7 +3,7 @@
 A *simple* command-line tool and API to send messages to a Meshtastic MQTT broker.  Why? Because with an mqtt integration with your Meshtastic nodes you can bridge the gap between the www and your mesh. Consider perhaps using this with Home Assistant.  Or down downtime alerts?  Or simply for range testing.
 
 ```
-					  Your Code
+					Your Code / HA
 						  |
 					   MeshMqtt
 						  |
