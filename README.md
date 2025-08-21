@@ -55,7 +55,7 @@ All options are required except `--port` (default: 1883) and `--channel` (defaul
 
 ### Example
 ```
-meshmqtt --host=192.168.4.197 --username=mesh --password=MeshPassword123! --user-id=ba67019c --node-number=3127312796 --meshtastic-mqtt-root-topic=mesh/messages --body="Hello from the command line"
+meshmqtt --host=192.168.4.197 --username=mesh --password=MeshPass! --user-id=ba67019c --node-number=3127312796 --meshtastic-mqtt-root-topic=mesh/messages --body="Hello from the command line"
 ```
 
 ## Options
