@@ -15,7 +15,7 @@ The api is useful to allow you to send data to your mesh via a simple curl comma
 
 A useful example would be a HomeAssistant integration.
 
-Add a shell script to your tool box by adding the following to your configuration.yaml:
+Add a shell script to your tool box by adding the following to your Home Assistant `configuration.yaml`:
 
 ```
 shell_command:
