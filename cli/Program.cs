@@ -14,18 +14,29 @@ class Program
     static string channelNumber = "1";
     static string topic = "";
     static string clientId = "";
+	static int repeatInterval = 0;
 
-    static async Task Main(string[] args)
-    {
-        ParseArgs(args);
-        if (!CheckArgsShowUsage()) { return; }
-        topic = $"{meshtasticMqttRootTopic}/2/json/Mqtt/{userId}";
-        clientId = Guid.NewGuid().ToString();
-        ShowArgs();
-        await Mqtt.SendMessage(host, port, username, password, userId, nodeNumber, meshtasticMqttRootTopic, body, channelNumber, topic, clientId);
-    }
+	static async Task Main(string[] args)
+	{
+		ParseArgs(args);
+		if (!CheckArgsShowUsage()) { return; }
+		topic = $"{meshtasticMqttRootTopic}/2/json/Mqtt/{userId}";
+		clientId = Guid.NewGuid().ToString();
+		ShowArgs();
+		await Mqtt.SendMessage(host, port, username, password, userId, nodeNumber, meshtasticMqttRootTopic, body, channelNumber, topic, clientId);
+		if (repeatInterval > 0)
+		{
+			var count = 2;
+			while (true)
+			{
+				await Task.Delay(repeatInterval * 1000);
+				await Mqtt.SendMessage(host, port, username, password, userId, nodeNumber, meshtasticMqttRootTopic, $"{count}: {body}", channelNumber, topic, clientId);
+				count++;
+			}
+		}
+	}
 
-	
+
 
 	private static void ShowArgs()
 	{
@@ -38,6 +49,7 @@ class Program
 		Console.WriteLine($"Meshtastic MQTT Root Topic: {meshtasticMqttRootTopic}");
 		Console.WriteLine($"Message Body: {body}");
 		Console.WriteLine($"MQTT Topic: {topic}");
+		if (repeatInterval > 0) { Console.WriteLine($"Repeating every {repeatInterval} seconds. Ctl+c to stop."); }
 	}
 
 	private static bool CheckArgsShowUsage()
@@ -61,6 +73,7 @@ class Program
 				"--node-number=<Meshtastic Node Number of the network connected node>\n " +
 				"--meshtastic-mqtt-root-topic=<Root Topic set in meshtastic MQTT settings>\n " +
 				"--channel=<Meshtastic Channel Number. Defaults to 1!! (Your first manually added channel, not LongFast)>\n " +
+				"--repeat-interval=<Repeat message interval in seconds. Defaults to 0 - no repeat>\n " +
 				"--body=<Message Body>");
 			Console.WriteLine("\nAll options are required except --port (default: 1883). Example:");
 			Console.WriteLine("  meshmqtt --host=192.168.0.1 --username=mesh --password=meshp --user-id=ba67019c --node-number=3127312796 --meshtastic-mqtt-root-topic=mesh/messages --body=Hello");
@@ -90,6 +103,7 @@ class Program
 				case "meshtastic-mqtt-root-topic": meshtasticMqttRootTopic = value; break;
 				case "body": body = value; break;
 				case "channel": channelNumber = value; break;
+				case "repeat-interval": if (int.TryParse(value, out var ri)) repeatInterval = ri; break;
 			}
 		}
 	}

@@ -1,6 +1,0 @@
-@api_HostAddress = http://localhost:5292
-
-POST {{api_HostAddress}}/messages/
-Accept: application/json
-
-###
