@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8097:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - host=192.168.4.197
+      - port=1883
+      - username=mesh
+      - password=******
+      - userId=ba67019c
+      - nodeNumber=3127312796
+      - meshtasticMqttRootTopic=mesh/messages
+      - channelNumber=1
+    restart: unless-stopped
