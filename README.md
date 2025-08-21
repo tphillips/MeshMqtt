@@ -122,7 +122,7 @@ The `--repeat-interval` setting is useful for range testing, for example.
 ## Requirements
 - .NET 8 SDK or newer
 - MQTTnet NuGet package
-- A mqtt server
+- An mqtt server
 
 ## What, No MQTT Server
 
