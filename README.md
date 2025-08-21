@@ -98,7 +98,7 @@ Run the cli program with required options:
 meshmqtt --host=HOST --port=PORT --username=USER --password=PASS --user-id=ID --node-number=NUM --meshtastic-mqtt-root-topic=TOPIC --channel=1 --body=BODY
 ```
 
-All options are required except `--port` (default: 1883) and `--channel` (default: 1).
+All options are required except `--port` (default: 1883), `--channel` (default: 1) and `--repeat-interval`.
 
 ### Example
 ```
