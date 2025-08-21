@@ -1,6 +1,6 @@
 # MeshMqtt
 
-A simple command-line tool and API to send messages to a Meshtastic MQTT broker.  More for information purposes but perfectly usable.  You are probably looking for this:
+A *simple* command-line tool and API to send messages to a Meshtastic MQTT broker.  More for information purposes but perfectly usable.  You are probably looking for this:
 
 `.WithPayload($"{{\"from\":{nodeNumber},\"channel\":{channelNumber},\"payload\":\"{body}\",\"type\":\"sendtext\"}}")`
 
