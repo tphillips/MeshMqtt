@@ -78,7 +78,7 @@ sudo docker exec -it meshmqtt-api-1 /app/MeshMqtt --host=192.168.4.197 --usernam
 `curl -X 'POST' 'http://localhost:8097/messages?message=Hello'`
 
 ## API Usage
-Set the properties of Global.cs via your docker enviroment variables, then start the container.
+Set the properties of Global.cs via your Docker environment variables, then start the container.
 
 Send messages with: 
 
@@ -86,9 +86,9 @@ Send messages with:
 
 The api is useful to allow you to send data to your mesh via a simple curl command.  Avoiding the complexities of mqtt (and even the complexities of this cli).
 
-A useful example would be a HomeAssistant integration.
+A useful example would be a Home Assistant integration.
 
-Add a shell script to your tool box by adding the following to your Home Assistant `configuration.yaml`:
+Add a shell script to your toolbox by adding the following to your Home Assistant `configuration.yaml`:
 
 ```
 shell_command:
@@ -119,7 +119,7 @@ mode: single
 ## CLI Usage (Not using Docker)
 
 If you want to avoid Docker and use the cli, you will need to build it.
-Run the cli program with required options:
+Run the cli program with the required options:
 
 ```
 meshmqtt --host=HOST --port=PORT --username=USER --password=PASS --user-id=ID --node-number=NUM --meshtastic-mqtt-root-topic=TOPIC --channel=1 --body=BODY
@@ -137,7 +137,7 @@ meshmqtt --host=192.168.4.197 --username=mesh --password=MeshPass! --user-id=ba6
 - `--port` : MQTT broker port (default: 1883)
 - `--username` : MQTT username (required)
 - `--password` : MQTT password (required)
-- `--user-id` : Meshtastic user ID of the network connected node WITHOUT THE LEADING ! (required)
+- `--user-id` : Meshtastic user ID of the network-connected node WITHOUT THE LEADING ! (required)
 - `--node-number` : Meshtastic node number of the network connected node (required)
 - `--meshtastic-mqtt-root-topic` : Root topic as set in meshtastic MQTT settings (required)
 - `--channel` : Meshtastic Channel Number. Defaults to 1!! (Your first manually added channel, not LongFast)
