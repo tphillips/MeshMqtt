@@ -89,8 +89,9 @@ actions:
 mode: single
 ```
 
-## CLI Usage
+## CLI Usage (Not using Docker)
 
+If you want to avoid Docker and use the cli, you will need to build it..
 Run the cli program with required options:
 
 ```
