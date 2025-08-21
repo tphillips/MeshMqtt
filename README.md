@@ -122,6 +122,28 @@ The `--repeat-interval` setting is useful for range testing, for example.
 ## Requirements
 - .NET 8 SDK or newer
 - MQTTnet NuGet package
+- A mqtt server
+
+## What, No MQTT Server
+
+I got you:
+
+Mqtt `compose.yaml`
+```
+services:
+  mqtt5:
+    image: eclipse-mosquitto
+    container_name: mqtt5
+    ports:
+      - "1883:1883"  # Default MQTT port
+      - "9001:9001"  # MQTT port for WebSockets
+    volumes:
+      - ./config:/mosquitto/config:rw
+      - ./data:/mosquitto/data:rw
+      - ./log:/mosquitto/log:rw
+    restart: unless-stopped
+```
+
 
 ## License
 MIT
