@@ -1,8 +1,28 @@
 # MeshMqtt
 
-A *simple* command-line tool and API to send messages to a Meshtastic MQTT broker.  More for information purposes but perfectly usable.  You are probably looking for this:
+A *simple* command-line tool and API to send messages to a Meshtastic MQTT broker.  Why? Because with an mqtt integration with your Meshtastic nodes you can bridge the gap between the www and your mesh. Consider perhaps using this with Home Assistant.  Or down downtime alerts?  Or simply for range testing.
 
-`.WithPayload($"{{\"from\":{nodeNumber},\"channel\":{channelNumber},\"payload\":\"{body}\",\"type\":\"sendtext\"}}")`
+```
+				+---------------------+
+				|   MQTT Broker       |
+				|  (Internet)         |
+				+---------------------+
+						  |
+						  |
+				+---------------------+
+				| Meshtastic Node     |
+				| (Internet Connected)|
+				+---------------------+
+						  |
+		 +----------------+----------------+
+		 |                                 |
++---------------------+         +---------------------+
+| Meshtastic Node     |         | Meshtastic Node     |
+| (No Internet)       |         | (No Internet)       |
++---------------------+         +---------------------+
+
+	    (Messages relayed via mesh network)
+```
 
 ## Docker Compose (The EASY way for self-hosters)
 Clone the repo (assumes you have a folder in your home called dockers, but clone it wherever you like):
