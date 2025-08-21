@@ -4,12 +4,58 @@ A simple command-line tool and API to send messages to a Meshtastic MQTT broker.
 
 `.WithPayload($"{{\"from\":{nodeNumber},\"channel\":{channelNumber},\"payload\":\"{body}\",\"type\":\"sendtext\"}}")`
 
+## Docker Compose (The EASY way for self-hosters)
+Clone the repo (assumes you have a folder in your home called dockers, but clone it wherever you like):
+```
+cd dockers
+git clone https://github.com/tphillips/MeshMqtt.git
+cd meshmqtt
+nano compose.yaml
+```
+Set your environment up in there.  The following needs to be set with your values:
+```
+- host=192.168.4.197
+- port=1883
+- username=mesh
+- password=******
+- userId=ba67019c
+- nodeNumber=3127312796
+- meshtasticMqttRootTopic=mesh/messages
+- channelNumber=1
+```
+You can also set the port that will be exposed by changing the port from 8097:
+```
+ports:
+	- "8097:8080"
+```
+Start the service
+```
+docker compose up
+```
+
+### Use the CLI from the container
+The cli is included in the container, so you can run it by attaching to the container.
+
+```
+sudo docker ps -a
+```
+Find the container running meshmqtt-api (Hint: it's probably `meshmqtt-api-1`).
+Run via bash:
+```
+sudo docker exec -it meshmqtt-api-1 /bin/bash
+>:/app# ./MeshMqtt
+```
+OR run the executable directly in the container:
+```
+sudo docker exec -it meshmqtt-api-1 /app/MeshMqtt --host=192.168.4.197 --username=mesh --password=MeshPass! --user-id=ba67019c --node-number=3127312796 --meshtastic-mqtt-root-topic=mesh/messages --body="Hello from the command line"
+```
+
 ## API Usage
 Set the properties of Global.cs via your docker enviroment variables, then start the container.
 
 Send messages with: 
 
-`curl -X 'POST' 'http://localhost:8080/messages?message=Hello'`
+`curl -X 'POST' 'http://localhost:8097/messages?message=Hello'`
 
 The api is useful to allow you to send data to your mesh via a simple curl command.  Avoiding the complexities of mqtt.
 
