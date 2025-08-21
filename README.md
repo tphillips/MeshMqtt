@@ -11,6 +11,38 @@ Send messages with:
 
 `curl -X 'POST' 'http://localhost:8080/messages?message=Hello'`
 
+The api is useful to allow you to send data to your mesh via a simple curl command.  Avoiding the complexities of mqtt.
+
+A useful example would be a HomeAssistant integration.
+
+Add a shell script to your tool box by adding the following to your configuration.yaml:
+
+```
+shell_command:
+  send_mesh_message: "curl -X POST 'https://your.ip.or.url/messages?message={{ arguments }}'"
+
+```
+
+Then integrate into a HomeAssistant automation:
+
+```
+alias: Send mesh weather on change
+description: "Sends a weather snapshot to Meshtastic on weather change"
+triggers:
+  - trigger: state
+    entity_id:
+      - weather.forecast_home
+conditions: []
+actions:
+  - action: shell_command.send_mesh_message
+    data_template:
+      arguments: >-
+        'Weather:+'{{states('weather.forecast_home')}}'.+Wind+is:+'{{state_attr('weather.forecast_home',
+        'wind_speed')}}'mph.+Kitchen+temp+is:+'{{states('sensor.kitchen_temperature')
+        | round(1)}}'c.+Sunsets:+'{{states('sensor.sun_next_setting')}}
+mode: single
+```
+
 ## CLI Usage
 
 Run the cli program with required options:
