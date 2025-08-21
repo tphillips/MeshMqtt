@@ -35,7 +35,7 @@ git clone https://github.com/tphillips/MeshMqtt.git
 cd meshmqtt
 nano compose.yaml
 ```
-Set your environment up in there.  The following needs to be set with your values:
+Set your environment up in there.  The following needs to be set with your values (See options below for help):
 ```
 - host=192.168.4.197
 - port=1883
