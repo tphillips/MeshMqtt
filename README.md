@@ -14,14 +14,14 @@ A *simple* command-line tool and API to send messages to a Meshtastic MQTT broke
 						  |
 				+----------------------+
 				|   Meshtastic Node    |
-				| (Internet Connected) |
+				|     (Networked)      |
 				+----------------------+
 						  |
 		 +----------------+----------------+
 		 |                                 |
 +---------------------+         +---------------------+
 | Meshtastic Node     |         | Meshtastic Node     |
-| (No Internet)       |         | (No Internet)       |
+| (No Network)        |         | (No Network)        |
 +---------------------+         +---------------------+
 
 	    (Messages relayed via mesh network)
